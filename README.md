@@ -109,6 +109,5 @@ Cada sección te irá guiando paso a paso para completar los datos necesarios y 
 
 - Franco Ghilardi
 - Kevin Gastaldello
-- Jose Gimenez
 
 ---
