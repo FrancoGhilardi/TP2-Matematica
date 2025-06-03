@@ -11,8 +11,8 @@ def es_bisiesto(anio):
 
 # A. OPERACIONES CON DNIs
 def operaciones_con_dnis():
-    print(Fore.CYAN + "\n=== Operaciones con DNIs ===")
-    cantidad = int(input(Fore.YELLOW + "¿Cuántos DNIs desea ingresar? "))
+    cantidad = 2
+    print(Fore.YELLOW + f"Se solicitarán {cantidad} DNIs.")
     dnis = []
     conjuntos_digitos = []
 
@@ -28,9 +28,21 @@ def operaciones_con_dnis():
     diferencia_simetrica = set.symmetric_difference(*conjuntos_digitos)
 
     print(Fore.GREEN + "Unión de dígitos:", union)
-    print(Fore.GREEN + "Intersección de dígitos:", interseccion)
-    print(Fore.GREEN + "Diferencia (primer DNI - resto):", diferencia)
-    print(Fore.GREEN + "Diferencia simétrica:", diferencia_simetrica)
+
+    if interseccion:
+        print(Fore.GREEN + "Intersección de dígitos:", interseccion)
+    else:
+        print(Fore.RED + "Intersección de dígitos: No hay dígitos en común.")
+
+    if diferencia:
+        print(Fore.GREEN + "Diferencia (primer DNI - resto):", diferencia)
+    else:
+        print(Fore.RED + "Diferencia (primer DNI - resto): No hay diferencias.")
+
+    if diferencia_simetrica:
+        print(Fore.GREEN + "Diferencia simétrica:", diferencia_simetrica)
+    else:
+        print(Fore.RED + "Diferencia simétrica: Los DNIs tienen exactamente los mismos dígitos.")
 
     print(Fore.CYAN + "\n--- Frecuencia de dígitos y suma total ---")
     for dni in dnis:
@@ -54,7 +66,15 @@ def operaciones_con_dnis():
 # B. OPERACIONES CON AÑOS DE NACIMIENTO
 def operaciones_con_anios():
     print(Fore.CYAN + "\n=== Operaciones con Años de Nacimiento ===")
-    cantidad = int(input(Fore.YELLOW + "¿Cuántos años de nacimiento desea ingresar? "))
+    while True:
+        try:
+            cantidad = int(input(Fore.YELLOW + "¿Cuántos años de nacimiento desea ingresar? "))
+            if cantidad >= 1:
+                break
+            else:
+                print(Fore.RED + "Por favor, ingrese un número mayor o igual a 1.")
+        except ValueError:
+            print(Fore.RED + "Entrada inválida. Ingrese un número entero.")
     anios = []
 
     for i in range(cantidad):
